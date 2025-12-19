@@ -7,15 +7,11 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        python_package_dir: [ 'src/python' ]
-
     name: Build distribution 📦
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ${{ matrix.python_package_dir }}
+        working-directory: ./src/python
 
     if: github.event_name == 'push' || github.event_name == 'release'
 
@@ -39,7 +35,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: python-package-distributions
-        path: dist/
+        path: src/python/dist/
 
   publish-to-pypi:
     name: >-
@@ -57,16 +53,18 @@ jobs:
 
     defaults:
       run:
-        working-directory: ${{ matrix.python_package_dir }}
+        working-directory: ./src/python
 
     steps:
     - name: Download all the dists
       uses: actions/download-artifact@v4
       with:
         name: python-package-distributions
-        path: dist/
+        path: src/python/dist/
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        packages-dir: ./src/python/dist/
 
   github-release:
     name: >-
@@ -77,9 +75,10 @@ jobs:
     runs-on: ubuntu-latest
 
     if: github.event_name == 'release'
+
     defaults:
       run:
-        working-directory: ${{ matrix.python_package_dir }}
+        working-directory: ./src/python
 
     permissions:
       contents: write  # IMPORTANT: mandatory for making GitHub Releases
@@ -90,13 +89,13 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: python-package-distributions
-        path: dist/
+        path: src/python/dist/
     - name: Sign the dists with Sigstore
       uses: sigstore/gh-action-sigstore-python@v3.0.0
       with:
         inputs: >-
-          ./dist/*.tar.gz
-          ./dist/*.whl
+          ./src/python/dist/*.tar.gz
+          ./src/python/dist/*.whl
     - name: Upload artifact signatures to GitHub Release
       env:
         GITHUB_TOKEN: ${{ github.token }}
@@ -105,5 +104,5 @@ jobs:
       # sigstore-produced signatures and certificates.
       run: >-
         gh release upload
-        '${{ github.ref_name }}' dist/**
+        '${{ github.ref_name }}' src/python/dist/**
         --repo '${{ github.repository }}'
