@@ -1,3 +1,10 @@
+python3-pirogue-admin-api (2.0.2) UNRELEASED; urgency=medium
+
+  * Improved package info message.
+  * More versatile status info message.
+
+ -- Christophe Andral <christophe@andral.fr>  Fri, 02 Dec 2025 08:57:48 +0100
+
 python3-pirogue-admin-api (2.0.1) bookworm; urgency=medium
 
   * Fix proto for managing isolated ports

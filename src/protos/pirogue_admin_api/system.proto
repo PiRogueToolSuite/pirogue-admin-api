@@ -72,23 +72,27 @@ message ConfigurationTree {
   map<string, ConfigurationTreeSection> actions = 4;
 }
 
-enum StatusState {
-  STATUS_STATE_UNSPECIFIED = 0;
-  STATUS_STATE_DOWN = 1;
-  STATUS_STATE_STARTING = 2;
-  STATUS_STATE_UP = 3;
-  STATUS_STATE_STOPPING = 4;
-  STATUS_STATE_ERROR = 5;
+message ItemInfo {
+  string name = 1;
+  string description = 2;
+  string state = 3;
+}
+
+message SectionStatus {
+  string name = 1;
+  string description = 2;
+  repeated ItemInfo items = 3;
 }
 
 message Status {
-  map<string, StatusState> status = 1;
+  repeated SectionStatus sections = 1;
 }
 
 message PackageInfo {
-  string name = 1;
+  string package = 1;
   string version = 2;
-  string status = 3;
+  string state = 3;  /* aka status (from a deb pov) */
+  string status = 4; /* aka error if any (from a deb pov) */
 }
 message PackagesInfo {
   repeated PackageInfo packages = 1;

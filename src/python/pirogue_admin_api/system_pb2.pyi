@@ -12,12 +12,6 @@ OPERATING_MODE_APPLIANCE: OperatingMode
 OPERATING_MODE_UNSPECIFIED: OperatingMode
 OPERATING_MODE_VPN: OperatingMode
 OPERATING_MODE_WIFI_2_USB_TETHERING: OperatingMode
-STATUS_STATE_DOWN: StatusState
-STATUS_STATE_ERROR: StatusState
-STATUS_STATE_STARTING: StatusState
-STATUS_STATE_STOPPING: StatusState
-STATUS_STATE_UNSPECIFIED: StatusState
-STATUS_STATE_UP: StatusState
 
 class ApplyRequest(_message.Message):
     __slots__ = ["commit", "configuration", "from_scratch"]
@@ -108,6 +102,16 @@ class DeviceList(_message.Message):
     devices: _containers.RepeatedCompositeFieldContainer[Device]
     def __init__(self, devices: _Optional[_Iterable[_Union[Device, _Mapping]]] = ...) -> None: ...
 
+class ItemInfo(_message.Message):
+    __slots__ = ["description", "name", "state"]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
+    description: str
+    name: str
+    state: str
+    def __init__(self, name: _Optional[str] = ..., description: _Optional[str] = ..., state: _Optional[str] = ...) -> None: ...
+
 class OperatingModeResponse(_message.Message):
     __slots__ = ["mode"]
     MODE_FIELD_NUMBER: _ClassVar[int]
@@ -115,14 +119,16 @@ class OperatingModeResponse(_message.Message):
     def __init__(self, mode: _Optional[_Union[OperatingMode, str]] = ...) -> None: ...
 
 class PackageInfo(_message.Message):
-    __slots__ = ["name", "status", "version"]
-    NAME_FIELD_NUMBER: _ClassVar[int]
+    __slots__ = ["package", "state", "status", "version"]
+    PACKAGE_FIELD_NUMBER: _ClassVar[int]
+    STATE_FIELD_NUMBER: _ClassVar[int]
     STATUS_FIELD_NUMBER: _ClassVar[int]
     VERSION_FIELD_NUMBER: _ClassVar[int]
-    name: str
+    package: str
+    state: str
     status: str
     version: str
-    def __init__(self, name: _Optional[str] = ..., version: _Optional[str] = ..., status: _Optional[str] = ...) -> None: ...
+    def __init__(self, package: _Optional[str] = ..., version: _Optional[str] = ..., state: _Optional[str] = ..., status: _Optional[str] = ...) -> None: ...
 
 class PackagesInfo(_message.Message):
     __slots__ = ["packages"]
@@ -130,21 +136,21 @@ class PackagesInfo(_message.Message):
     packages: _containers.RepeatedCompositeFieldContainer[PackageInfo]
     def __init__(self, packages: _Optional[_Iterable[_Union[PackageInfo, _Mapping]]] = ...) -> None: ...
 
+class SectionStatus(_message.Message):
+    __slots__ = ["description", "items", "name"]
+    DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
+    ITEMS_FIELD_NUMBER: _ClassVar[int]
+    NAME_FIELD_NUMBER: _ClassVar[int]
+    description: str
+    items: _containers.RepeatedCompositeFieldContainer[ItemInfo]
+    name: str
+    def __init__(self, name: _Optional[str] = ..., description: _Optional[str] = ..., items: _Optional[_Iterable[_Union[ItemInfo, _Mapping]]] = ...) -> None: ...
+
 class Status(_message.Message):
-    __slots__ = ["status"]
-    class StatusEntry(_message.Message):
-        __slots__ = ["key", "value"]
-        KEY_FIELD_NUMBER: _ClassVar[int]
-        VALUE_FIELD_NUMBER: _ClassVar[int]
-        key: str
-        value: StatusState
-        def __init__(self, key: _Optional[str] = ..., value: _Optional[_Union[StatusState, str]] = ...) -> None: ...
-    STATUS_FIELD_NUMBER: _ClassVar[int]
-    status: _containers.ScalarMap[str, StatusState]
-    def __init__(self, status: _Optional[_Mapping[str, StatusState]] = ...) -> None: ...
+    __slots__ = ["sections"]
+    SECTIONS_FIELD_NUMBER: _ClassVar[int]
+    sections: _containers.RepeatedCompositeFieldContainer[SectionStatus]
+    def __init__(self, sections: _Optional[_Iterable[_Union[SectionStatus, _Mapping]]] = ...) -> None: ...
 
 class OperatingMode(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
-
-class StatusState(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []
