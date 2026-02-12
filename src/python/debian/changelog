@@ -1,9 +1,10 @@
-python3-pirogue-admin-api (2.0.2) UNRELEASED; urgency=medium
+python3-pirogue-admin-api (2.0.3) bookworm; urgency=medium
 
   * Improved package info message.
   * More versatile status info message.
+  * Adds access service to manage user tokens
 
- -- Christophe Andral <christophe@andral.fr>  Fri, 02 Dec 2025 08:57:48 +0100
+ -- Christophe Andral <christophe@andral.fr>  Thu, 12 Feb 2026 15:22:51 +0100
 
 python3-pirogue-admin-api (2.0.1) bookworm; urgency=medium
 

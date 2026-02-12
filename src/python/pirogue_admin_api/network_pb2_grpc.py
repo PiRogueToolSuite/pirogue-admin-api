@@ -8,7 +8,9 @@ from pirogue_admin_api import network_pb2 as pirogue__admin__api_dot_network__pb
 
 
 class NetworkStub(object):
-    """Missing associated documentation comment in .proto file."""
+    """
+    Manage network related features on this PiRogue.
+    """
 
     def __init__(self, channel):
         """Constructor.
@@ -51,26 +53,6 @@ class NetworkStub(object):
                 request_serializer=pirogue__admin__api_dot_network__pb2.WifiConfiguration.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
-        self.ResetAdministrationToken = channel.unary_unary(
-                '/pirogue.admin.network.Network/ResetAdministrationToken',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-                )
-        self.GetAdministrationToken = channel.unary_unary(
-                '/pirogue.admin.network.Network/GetAdministrationToken',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-                )
-        self.GetAdministrationCertificate = channel.unary_unary(
-                '/pirogue.admin.network.Network/GetAdministrationCertificate',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-                )
-        self.GetAdministrationCLIs = channel.unary_unary(
-                '/pirogue.admin.network.Network/GetAdministrationCLIs',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-                )
         self.EnableExternalPublicAccess = channel.unary_unary(
                 '/pirogue.admin.network.Network/EnableExternalPublicAccess',
                 request_serializer=pirogue__admin__api_dot_network__pb2.PublicAccessRequest.SerializeToString,
@@ -99,17 +81,24 @@ class NetworkStub(object):
 
 
 class NetworkServicer(object):
-    """Missing associated documentation comment in .proto file."""
+    """
+    Manage network related features on this PiRogue.
+    """
 
     def ListVPNPeers(self, request, context):
-        """VPN 
+        """
+        Get a list of active VPN peers.
+        Returns a list of VPNPeer.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def GetVPNPeer(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """
+        Get details about a given VPN peer ID.
+        Returns the VPNPeer details.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -133,39 +122,19 @@ class NetworkServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetWifiConfiguration(self, request, context):
-        """WiFi 
+        """
+        Get current WiFi configuration.
+        Returns a WifiConfiguration dictionary.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def SetWifiConfiguration(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ResetAdministrationToken(self, request, context):
-        """External administration 
         """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetAdministrationToken(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetAdministrationCertificate(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetAdministrationCLIs(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        Set a new WiFi configuration.
+        Params: the WifiConfiguration dictionary to use as new configuration.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -240,26 +209,6 @@ def add_NetworkServicer_to_server(servicer, server):
                     request_deserializer=pirogue__admin__api_dot_network__pb2.WifiConfiguration.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
-            'ResetAdministrationToken': grpc.unary_unary_rpc_method_handler(
-                    servicer.ResetAdministrationToken,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-            ),
-            'GetAdministrationToken': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetAdministrationToken,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-            ),
-            'GetAdministrationCertificate': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetAdministrationCertificate,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-            ),
-            'GetAdministrationCLIs': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetAdministrationCLIs,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-            ),
             'EnableExternalPublicAccess': grpc.unary_unary_rpc_method_handler(
                     servicer.EnableExternalPublicAccess,
                     request_deserializer=pirogue__admin__api_dot_network__pb2.PublicAccessRequest.FromString,
@@ -293,7 +242,9 @@ def add_NetworkServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class Network(object):
-    """Missing associated documentation comment in .proto file."""
+    """
+    Manage network related features on this PiRogue.
+    """
 
     @staticmethod
     def ListVPNPeers(request,
@@ -411,74 +362,6 @@ class Network(object):
         return grpc.experimental.unary_unary(request, target, '/pirogue.admin.network.Network/SetWifiConfiguration',
             pirogue__admin__api_dot_network__pb2.WifiConfiguration.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ResetAdministrationToken(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.network.Network/ResetAdministrationToken',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetAdministrationToken(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.network.Network/GetAdministrationToken',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetAdministrationCertificate(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.network.Network/GetAdministrationCertificate',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def GetAdministrationCLIs(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.network.Network/GetAdministrationCLIs',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 

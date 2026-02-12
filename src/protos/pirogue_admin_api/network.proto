@@ -5,23 +5,35 @@ package pirogue.admin.network;
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
+/*
+ Manage network related features on this PiRogue.
+ */
 service Network {
-  /* VPN */
+
+  /*
+  Get a list of active VPN peers.
+  Returns a list of VPNPeer.
+  */
   rpc ListVPNPeers (google.protobuf.Empty) returns (VPNPeerList) {}
+  /*
+  Get details about a given VPN peer ID.
+  Returns the VPNPeer details.
+  */
   rpc GetVPNPeer (google.protobuf.Int32Value) returns (VPNPeer) {}
   rpc GetVPNPeerConfig (google.protobuf.Int32Value) returns (google.protobuf.StringValue) {}
   rpc AddVPNPeer (VPNPeerAddRequest) returns (VPNPeer) {}
   rpc DeleteVPNPeer (google.protobuf.Int32Value) returns (VPNPeer) {}
 
-  /* WiFi */
+  /*
+  Get current WiFi configuration.
+  Returns a WifiConfiguration dictionary.
+  */
   rpc GetWifiConfiguration (google.protobuf.Empty) returns (WifiConfiguration) {}
+  /*
+  Set a new WiFi configuration.
+  Params: the WifiConfiguration dictionary to use as new configuration.
+  */
   rpc SetWifiConfiguration (WifiConfiguration) returns (google.protobuf.Empty) {}
-
-  /* External administration */
-  rpc ResetAdministrationToken (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
-  rpc GetAdministrationToken (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
-  rpc GetAdministrationCertificate (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
-  rpc GetAdministrationCLIs (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
 
   /* External access */
   rpc EnableExternalPublicAccess (PublicAccessRequest) returns (google.protobuf.Empty) {}

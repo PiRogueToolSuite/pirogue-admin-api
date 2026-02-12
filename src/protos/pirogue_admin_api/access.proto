@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+package pirogue.admin.access;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+/*
+ Manage accesses to this PiRogue.
+ */
+service Access {
+
+  /*
+  Resets and generate a new administration token.
+  Returns the new administration token.
+  */
+  rpc ResetAdministrationToken (google.protobuf.Empty) returns (google.protobuf.StringValue);
+  /*
+  Get the current administration token.
+  Returns the current administration token.
+  */
+  rpc GetAdministrationToken (google.protobuf.Empty) returns (google.protobuf.StringValue);
+  /*
+  Get the current administration certificate.
+  Returns the current administration certificate.
+  */
+  rpc GetAdministrationCertificate (google.protobuf.Empty) returns (google.protobuf.StringValue);
+  /*
+  Get a command line set to execute to configure a new remote client.
+  Returns command line instructions in one string
+  */
+  rpc GetAdministrationCLIs (google.protobuf.Empty) returns (google.protobuf.StringValue);
+
+  /*
+  Create a new user access with a fresh token and a empty access list.
+  Returns the newly created UserAccess.
+  */
+  rpc CreateUserAccess (google.protobuf.Empty) returns (UserAccess);
+  /*
+  Get user access details given its integer ID.
+  Params: the user access integer ID.
+  Returns the request UserAccess if it exists.
+  */
+  rpc GetUserAccess (google.protobuf.Int32Value) returns (UserAccess);
+  /*
+  Get a user access list.
+  Returns the UserAccess list.
+  */
+  rpc ListUserAccesses (google.protobuf.Empty) returns (UserAccessList);
+  /*
+  Delete a user access given its integer ID.
+  Params: the user access integer ID.
+  */
+  rpc DeleteUserAccess (google.protobuf.Int32Value) returns (google.protobuf.Empty);
+  /*
+  Reset the token a specific user access given its integer ID.
+  Returns the UserAccess with its new token.
+  */
+  rpc ResetUserAccessToken (google.protobuf.Int32Value) returns (UserAccess);
+  /*
+  Get a dictionary of all available permissions.
+  Returns the ServiceAccess dictionary.
+  */
+  rpc GetPermissionList (google.protobuf.Empty) returns (ServiceAccess);
+  /*
+  Set a batch of permissions changes for the given user access ID.
+  Changes may be a list of 'set', 'add' or 'remove'.
+  Returns the updated UserAccess.
+  */
+  rpc SetUserAccessPermissions (PermissionChanges) returns (UserAccess);
+}
+
+message MethodAccess {
+  repeated string permission = 1;
+}
+
+message ServiceAccess {
+  map<string, MethodAccess> services = 3;
+}
+
+message UserAccess {
+  int32 idx = 1;
+  string token = 2;
+  ServiceAccess permissions = 3;
+}
+
+message UserAccessList {
+  repeated UserAccess user_accesses = 1;
+}
+
+message PermissionChanges {
+  int32 user_access_idx = 1;
+  optional ServiceAccess sets = 2;
+  optional ServiceAccess adds = 3;
+  optional ServiceAccess removes = 4;
+}
