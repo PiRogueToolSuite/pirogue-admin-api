@@ -1,3 +1,9 @@
+python3-pirogue-admin-api (2.0.4) bookworm; urgency=medium
+
+  * Fixed pypi PEP-625 compliance
+
+ -- Christophe Andral <christophe@andral.fr>  Fri, 13 Feb 2026 10:42:02 +0100
+
 python3-pirogue-admin-api (2.0.3) bookworm; urgency=medium
 
   * Improved package info message.

@@ -12,11 +12,13 @@ The `pirogue-admin-api` package is the common definition between `pirogue-admin`
 ## Scope
 Here are high-level features covered by PiRogue administration:
 ```yaml
+Access:
+  - External remote administration management
+  - User access token and permissions management
 System:
   - Query
   - Configuration
 Networking:
-  - External remote administration management
   - External network management
   - Isolated network management
   - Public access management
