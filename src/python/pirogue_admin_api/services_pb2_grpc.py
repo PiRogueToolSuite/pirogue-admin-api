@@ -41,6 +41,26 @@ class ServicesStub(object):
                 request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
+        self.ListDeviceMonitorings = channel.unary_unary(
+                '/pirogue.admin.services.Services/ListDeviceMonitorings',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=pirogue__admin__api_dot_services__pb2.DeviceMonitorings.FromString,
+                )
+        self.AddDeviceMonitoring = channel.unary_unary(
+                '/pirogue.admin.services.Services/AddDeviceMonitoring',
+                request_serializer=pirogue__admin__api_dot_services__pb2.DeviceMonitoring.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
+        self.DeleteDeviceMonitoring = channel.unary_unary(
+                '/pirogue.admin.services.Services/DeleteDeviceMonitoring',
+                request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
+        self.GetDeviceMonitoringTemplate = channel.unary_unary(
+                '/pirogue.admin.services.Services/GetDeviceMonitoringTemplate',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=pirogue__admin__api_dot_services__pb2.DeviceMonitoring.FromString,
+                )
 
 
 class ServicesServicer(object):
@@ -79,6 +99,31 @@ class ServicesServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListDeviceMonitorings(self, request, context):
+        """Device Monitoring 
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AddDeviceMonitoring(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteDeviceMonitoring(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetDeviceMonitoringTemplate(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ServicesServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -106,6 +151,26 @@ def add_ServicesServicer_to_server(servicer, server):
                     servicer.DeleteSuricataRulesSource,
                     request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'ListDeviceMonitorings': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListDeviceMonitorings,
+                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    response_serializer=pirogue__admin__api_dot_services__pb2.DeviceMonitorings.SerializeToString,
+            ),
+            'AddDeviceMonitoring': grpc.unary_unary_rpc_method_handler(
+                    servicer.AddDeviceMonitoring,
+                    request_deserializer=pirogue__admin__api_dot_services__pb2.DeviceMonitoring.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'DeleteDeviceMonitoring': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteDeviceMonitoring,
+                    request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            ),
+            'GetDeviceMonitoringTemplate': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetDeviceMonitoringTemplate,
+                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    response_serializer=pirogue__admin__api_dot_services__pb2.DeviceMonitoring.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -199,5 +264,73 @@ class Services(object):
         return grpc.experimental.unary_unary(request, target, '/pirogue.admin.services.Services/DeleteSuricataRulesSource',
             google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListDeviceMonitorings(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.services.Services/ListDeviceMonitorings',
+            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            pirogue__admin__api_dot_services__pb2.DeviceMonitorings.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AddDeviceMonitoring(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.services.Services/AddDeviceMonitoring',
+            pirogue__admin__api_dot_services__pb2.DeviceMonitoring.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteDeviceMonitoring(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.services.Services/DeleteDeviceMonitoring',
+            google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetDeviceMonitoringTemplate(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.services.Services/GetDeviceMonitoringTemplate',
+            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            pirogue__admin__api_dot_services__pb2.DeviceMonitoring.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

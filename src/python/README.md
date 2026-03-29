@@ -27,4 +27,5 @@ Networking:
 Services:
   - Grafana administration
   - Suricata detection rules management
+  - Device monitoring management
 ```

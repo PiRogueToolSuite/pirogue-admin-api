@@ -15,19 +15,33 @@ from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 from google.protobuf import wrappers_pb2 as google_dot_protobuf_dot_wrappers__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n pirogue_admin_api/services.proto\x12\x16pirogue.admin.services\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"<\n\x16\x44\x61shboardConfiguration\x12\x15\n\x08password\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\x0b\n\t_password\"0\n\x13SuricataRulesSource\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03url\x18\x02 \x01(\t\"T\n\x14SuricataRulesSources\x12<\n\x07sources\x18\x01 \x03(\x0b\x32+.pirogue.admin.services.SuricataRulesSource2\xf2\x03\n\x08Services\x12\x65\n\x19GetDashboardConfiguration\x12\x16.google.protobuf.Empty\x1a..pirogue.admin.services.DashboardConfiguration\"\x00\x12\x65\n\x19SetDashboardConfiguration\x12..pirogue.admin.services.DashboardConfiguration\x1a\x16.google.protobuf.Empty\"\x00\x12\x62\n\x18ListSuricataRulesSources\x12\x16.google.protobuf.Empty\x1a,.pirogue.admin.services.SuricataRulesSources\"\x00\x12_\n\x16\x41\x64\x64SuricataRulesSource\x12+.pirogue.admin.services.SuricataRulesSource\x1a\x16.google.protobuf.Empty\"\x00\x12S\n\x19\x44\x65leteSuricataRulesSource\x12\x1c.google.protobuf.StringValue\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n pirogue_admin_api/services.proto\x12\x16pirogue.admin.services\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1egoogle/protobuf/wrappers.proto\"<\n\x16\x44\x61shboardConfiguration\x12\x15\n\x08password\x18\x01 \x01(\tH\x00\x88\x01\x01\x42\x0b\n\t_password\"\xe7\x02\n\x13SuricataRulesSource\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x03url\x18\x02 \x01(\tH\x00\x88\x01\x01\x12\x14\n\x07\x65nabled\x18\x03 \x01(\x08H\x01\x88\x01\x01\x12\x13\n\x06system\x18\x04 \x01(\x08H\x02\x88\x01\x01\x12O\n\nparameters\x18\x05 \x03(\x0b\x32;.pirogue.admin.services.SuricataRulesSource.ParametersEntry\x12\x14\n\x07summary\x18\x06 \x01(\tH\x03\x88\x01\x01\x12\x13\n\x06vendor\x18\x07 \x01(\tH\x04\x88\x01\x01\x12\x14\n\x07license\x18\x08 \x01(\tH\x05\x88\x01\x01\x1a\x31\n\x0fParametersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x06\n\x04_urlB\n\n\x08_enabledB\t\n\x07_systemB\n\n\x08_summaryB\t\n\x07_vendorB\n\n\x08_license\"T\n\x14SuricataRulesSources\x12<\n\x07sources\x18\x01 \x03(\x0b\x32+.pirogue.admin.services.SuricataRulesSource\";\n\x16\x44\x65viceMonitoringFilter\x12\x11\n\tattribute\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\"\xbc\x05\n\x10\x44\x65viceMonitoring\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06\x65nable\x18\x02 \x01(\x08\x12\x0b\n\x03url\x18\x03 \x01(\t\x12\x46\n\x07headers\x18\x04 \x03(\x0b\x32\x35.pirogue.admin.services.DeviceMonitoring.HeadersEntry\x12?\n\x07\x66ilters\x18\x05 \x03(\x0b\x32..pirogue.admin.services.DeviceMonitoringFilter\x12\x11\n\x04mode\x18\x06 \x01(\tH\x00\x88\x01\x01\x12\x16\n\tbulk_size\x18\x07 \x01(\x05H\x01\x88\x01\x01\x12\x1e\n\x11periodic_interval\x18\x08 \x01(\x02H\x02\x88\x01\x01\x12\x1a\n\rperiodic_rate\x18\t \x01(\x05H\x03\x88\x01\x01\x12\x18\n\x0bretry_count\x18\n \x01(\x05H\x04\x88\x01\x01\x12\x18\n\x0bretry_delay\x18\x0b \x01(\x02H\x05\x88\x01\x01\x12\x14\n\x07timeout\x18\x0c \x01(\x02H\x06\x88\x01\x01\x12\x17\n\nverify_ssl\x18\r \x01(\x08H\x07\x88\x01\x01\x12\x16\n\tauth_type\x18\x0e \x01(\tH\x08\x88\x01\x01\x12\x17\n\nauth_token\x18\x0f \x01(\tH\t\x88\x01\x01\x12\x1d\n\x10\x61uth_header_name\x18\x10 \x01(\tH\n\x88\x01\x01\x1a.\n\x0cHeadersEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\x07\n\x05_modeB\x0c\n\n_bulk_sizeB\x14\n\x12_periodic_intervalB\x10\n\x0e_periodic_rateB\x0e\n\x0c_retry_countB\x0e\n\x0c_retry_delayB\n\n\x08_timeoutB\r\n\x0b_verify_sslB\x0c\n\n_auth_typeB\r\n\x0b_auth_tokenB\x13\n\x11_auth_header_name\"R\n\x11\x44\x65viceMonitorings\x12=\n\x0bmonitorings\x18\x01 \x03(\x0b\x32(.pirogue.admin.services.DeviceMonitoring2\xe0\x06\n\x08Services\x12\x65\n\x19GetDashboardConfiguration\x12\x16.google.protobuf.Empty\x1a..pirogue.admin.services.DashboardConfiguration\"\x00\x12\x65\n\x19SetDashboardConfiguration\x12..pirogue.admin.services.DashboardConfiguration\x1a\x16.google.protobuf.Empty\"\x00\x12\x62\n\x18ListSuricataRulesSources\x12\x16.google.protobuf.Empty\x1a,.pirogue.admin.services.SuricataRulesSources\"\x00\x12_\n\x16\x41\x64\x64SuricataRulesSource\x12+.pirogue.admin.services.SuricataRulesSource\x1a\x16.google.protobuf.Empty\"\x00\x12S\n\x19\x44\x65leteSuricataRulesSource\x12\x1c.google.protobuf.StringValue\x1a\x16.google.protobuf.Empty\"\x00\x12\\\n\x15ListDeviceMonitorings\x12\x16.google.protobuf.Empty\x1a).pirogue.admin.services.DeviceMonitorings\"\x00\x12Y\n\x13\x41\x64\x64\x44\x65viceMonitoring\x12(.pirogue.admin.services.DeviceMonitoring\x1a\x16.google.protobuf.Empty\"\x00\x12P\n\x16\x44\x65leteDeviceMonitoring\x12\x1c.google.protobuf.StringValue\x1a\x16.google.protobuf.Empty\"\x00\x12\x61\n\x1bGetDeviceMonitoringTemplate\x12\x16.google.protobuf.Empty\x1a(.pirogue.admin.services.DeviceMonitoring\"\x00\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'pirogue_admin_api.services_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
+  _SURICATARULESSOURCE_PARAMETERSENTRY._options = None
+  _SURICATARULESSOURCE_PARAMETERSENTRY._serialized_options = b'8\001'
+  _DEVICEMONITORING_HEADERSENTRY._options = None
+  _DEVICEMONITORING_HEADERSENTRY._serialized_options = b'8\001'
   _DASHBOARDCONFIGURATION._serialized_start=121
   _DASHBOARDCONFIGURATION._serialized_end=181
-  _SURICATARULESSOURCE._serialized_start=183
-  _SURICATARULESSOURCE._serialized_end=231
-  _SURICATARULESSOURCES._serialized_start=233
-  _SURICATARULESSOURCES._serialized_end=317
-  _SERVICES._serialized_start=320
-  _SERVICES._serialized_end=818
+  _SURICATARULESSOURCE._serialized_start=184
+  _SURICATARULESSOURCE._serialized_end=543
+  _SURICATARULESSOURCE_PARAMETERSENTRY._serialized_start=428
+  _SURICATARULESSOURCE_PARAMETERSENTRY._serialized_end=477
+  _SURICATARULESSOURCES._serialized_start=545
+  _SURICATARULESSOURCES._serialized_end=629
+  _DEVICEMONITORINGFILTER._serialized_start=631
+  _DEVICEMONITORINGFILTER._serialized_end=690
+  _DEVICEMONITORING._serialized_start=693
+  _DEVICEMONITORING._serialized_end=1393
+  _DEVICEMONITORING_HEADERSENTRY._serialized_start=1175
+  _DEVICEMONITORING_HEADERSENTRY._serialized_end=1221
+  _DEVICEMONITORINGS._serialized_start=1395
+  _DEVICEMONITORINGS._serialized_end=1477
+  _SERVICES._serialized_start=1480
+  _SERVICES._serialized_end=2344
 # @@protoc_insertion_point(module_scope)
