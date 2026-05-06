@@ -6,20 +6,25 @@ import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
 service Services {
-  /* Dashboard */
+  /* Get Dashboard Configuration */
   rpc GetDashboardConfiguration (google.protobuf.Empty) returns (DashboardConfiguration) {}
+  /* Get Dashboard Configuration */
   rpc SetDashboardConfiguration (DashboardConfiguration) returns (google.protobuf.Empty) {}
 
-  /* Suricata */
+  /* List Suricata Rules Sources */
   rpc ListSuricataRulesSources (google.protobuf.Empty) returns (SuricataRulesSources) {}
-  /*rpc UpdateSuricataRulesSources (google.protobuf.Empty) returns (google.protobuf.StringValue) {}*/
+  /* Add Suricata Rules Sources */
   rpc AddSuricataRulesSource (SuricataRulesSource) returns (google.protobuf.Empty) {}
+  /* Delete Suricata Rules Sources */
   rpc DeleteSuricataRulesSource (google.protobuf.StringValue) returns (google.protobuf.Empty) {}
 
-  /* Device Monitoring */
+  /* List Active Device Monitorings */
   rpc ListDeviceMonitorings (google.protobuf.Empty) returns (DeviceMonitorings) {}
+  /* Add Device Monitorings */
   rpc AddDeviceMonitoring (DeviceMonitoring) returns (google.protobuf.Empty) {}
+  /* Delete Device Monitorings */
   rpc DeleteDeviceMonitoring (google.protobuf.StringValue) returns (google.protobuf.Empty) {}
+  /* Get Device Monitorings Template */
   rpc GetDeviceMonitoringTemplate (google.protobuf.Empty) returns (DeviceMonitoring) {}
 }
 

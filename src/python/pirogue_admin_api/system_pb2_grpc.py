@@ -46,35 +46,15 @@ class SystemStub(object):
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
                 )
-        self.SetHostname = channel.unary_unary(
-                '/pirogue.admin.system.System/SetHostname',
-                request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
         self.GetLocale = channel.unary_unary(
                 '/pirogue.admin.system.System/GetLocale',
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
                 )
-        self.SetLocale = channel.unary_unary(
-                '/pirogue.admin.system.System/SetLocale',
-                request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
         self.GetTimezone = channel.unary_unary(
                 '/pirogue.admin.system.System/GetTimezone',
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-                )
-        self.SetTimezone = channel.unary_unary(
-                '/pirogue.admin.system.System/SetTimezone',
-                request_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
-        self.ListConnectedDevices = channel.unary_unary(
-                '/pirogue.admin.system.System/ListConnectedDevices',
-                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=pirogue__admin__api_dot_system__pb2.DeviceList.FromString,
                 )
 
 
@@ -117,41 +97,13 @@ class SystemServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def SetHostname(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
     def GetLocale(self, request, context):
-        """rpc GetDomainName (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
-
-        rpc SetDomainName (google.protobuf.StringValue) returns (google.protobuf.Empty) {}
-
-        """
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def SetLocale(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def GetTimezone(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def SetTimezone(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ListConnectedDevices(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -190,35 +142,15 @@ def add_SystemServicer_to_server(servicer, server):
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                     response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
             ),
-            'SetHostname': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetHostname,
-                    request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
             'GetLocale': grpc.unary_unary_rpc_method_handler(
                     servicer.GetLocale,
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                     response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
             ),
-            'SetLocale': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetLocale,
-                    request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
             'GetTimezone': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTimezone,
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                     response_serializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-            ),
-            'SetTimezone': grpc.unary_unary_rpc_method_handler(
-                    servicer.SetTimezone,
-                    request_deserializer=google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
-            'ListConnectedDevices': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListConnectedDevices,
-                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=pirogue__admin__api_dot_system__pb2.DeviceList.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -333,23 +265,6 @@ class System(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def SetHostname(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.system.System/SetHostname',
-            google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
     def GetLocale(request,
             target,
             options=(),
@@ -367,23 +282,6 @@ class System(object):
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
 
     @staticmethod
-    def SetLocale(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.system.System/SetLocale',
-            google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
     def GetTimezone(request,
             target,
             options=(),
@@ -397,39 +295,5 @@ class System(object):
         return grpc.experimental.unary_unary(request, target, '/pirogue.admin.system.System/GetTimezone',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             google_dot_protobuf_dot_wrappers__pb2.StringValue.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def SetTimezone(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.system.System/SetTimezone',
-            google_dot_protobuf_dot_wrappers__pb2.StringValue.SerializeToString,
-            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
-
-    @staticmethod
-    def ListConnectedDevices(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.system.System/ListConnectedDevices',
-            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            pirogue__admin__api_dot_system__pb2.DeviceList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

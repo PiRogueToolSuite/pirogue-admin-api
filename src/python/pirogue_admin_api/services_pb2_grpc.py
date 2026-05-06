@@ -67,59 +67,64 @@ class ServicesServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def GetDashboardConfiguration(self, request, context):
-        """Dashboard 
+        """Get Dashboard Configuration 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def SetDashboardConfiguration(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Get Dashboard Configuration 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ListSuricataRulesSources(self, request, context):
-        """Suricata 
+        """List Suricata Rules Sources 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def AddSuricataRulesSource(self, request, context):
-        """rpc UpdateSuricataRulesSources (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
+        """Add Suricata Rules Sources 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DeleteSuricataRulesSource(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Delete Suricata Rules Sources 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ListDeviceMonitorings(self, request, context):
-        """Device Monitoring 
+        """List Active Device Monitorings 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def AddDeviceMonitoring(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Add Device Monitorings 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DeleteDeviceMonitoring(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Delete Device Monitorings 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def GetDeviceMonitoringTemplate(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Get Device Monitorings Template 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')

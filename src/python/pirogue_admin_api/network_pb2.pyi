@@ -13,6 +13,20 @@ class ClosePortRequest(_message.Message):
     port: int
     def __init__(self, port: _Optional[int] = ...) -> None: ...
 
+class Device(_message.Message):
+    __slots__ = ["ip_addr", "peer_idx"]
+    IP_ADDR_FIELD_NUMBER: _ClassVar[int]
+    PEER_IDX_FIELD_NUMBER: _ClassVar[int]
+    ip_addr: str
+    peer_idx: int
+    def __init__(self, ip_addr: _Optional[str] = ..., peer_idx: _Optional[int] = ...) -> None: ...
+
+class DeviceList(_message.Message):
+    __slots__ = ["devices"]
+    DEVICES_FIELD_NUMBER: _ClassVar[int]
+    devices: _containers.RepeatedCompositeFieldContainer[Device]
+    def __init__(self, devices: _Optional[_Iterable[_Union[Device, _Mapping]]] = ...) -> None: ...
+
 class IsolatedPort(_message.Message):
     __slots__ = ["destination_port", "port"]
     DESTINATION_PORT_FIELD_NUMBER: _ClassVar[int]
@@ -36,16 +50,18 @@ class PublicAccessRequest(_message.Message):
     def __init__(self, domain: _Optional[str] = ..., email: _Optional[str] = ...) -> None: ...
 
 class VPNPeer(_message.Message):
-    __slots__ = ["comment", "idx", "private_key", "public_key"]
+    __slots__ = ["comment", "idx", "ipv4_address", "private_key", "public_key"]
     COMMENT_FIELD_NUMBER: _ClassVar[int]
     IDX_FIELD_NUMBER: _ClassVar[int]
+    IPV4_ADDRESS_FIELD_NUMBER: _ClassVar[int]
     PRIVATE_KEY_FIELD_NUMBER: _ClassVar[int]
     PUBLIC_KEY_FIELD_NUMBER: _ClassVar[int]
     comment: str
     idx: int
+    ipv4_address: str
     private_key: str
     public_key: str
-    def __init__(self, idx: _Optional[int] = ..., comment: _Optional[str] = ..., public_key: _Optional[str] = ..., private_key: _Optional[str] = ...) -> None: ...
+    def __init__(self, idx: _Optional[int] = ..., comment: _Optional[str] = ..., public_key: _Optional[str] = ..., private_key: _Optional[str] = ..., ipv4_address: _Optional[str] = ...) -> None: ...
 
 class VPNPeerAddRequest(_message.Message):
     __slots__ = ["comment", "public_key"]

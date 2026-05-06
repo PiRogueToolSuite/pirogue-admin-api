@@ -12,26 +12,16 @@ service System {
   rpc GetStatus (google.protobuf.Empty) returns (Status) {}
 
   rpc GetConfiguration (google.protobuf.Empty) returns (Configuration) {}
-  /*rpc ApplyConfiguration (ApplyRequest) returns (google.protobuf.Empty) {}*/
 
   rpc GetConfigurationTree (google.protobuf.Empty) returns (ConfigurationTree) {}
 
   rpc GetPackagesInfo (google.protobuf.Empty) returns (PackagesInfo) {}
 
   rpc GetHostname (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
-  rpc SetHostname (google.protobuf.StringValue) returns (google.protobuf.Empty) {}
-
-  /*rpc GetDomainName (google.protobuf.Empty) returns (google.protobuf.StringValue) {}*/
-  /*rpc SetDomainName (google.protobuf.StringValue) returns (google.protobuf.Empty) {}*/
 
   rpc GetLocale (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
-  rpc SetLocale (google.protobuf.StringValue) returns (google.protobuf.Empty) {}
+
   rpc GetTimezone (google.protobuf.Empty) returns (google.protobuf.StringValue) {}
-  rpc SetTimezone (google.protobuf.StringValue) returns (google.protobuf.Empty) {}
-
-  rpc ListConnectedDevices (google.protobuf.Empty) returns (DeviceList) {}
-
-  /* rpc EnrollColanderServer (google.protobuf.Empty) returns (google.protobuf.Empty) {} */
 
 }
 
@@ -96,12 +86,4 @@ message PackageInfo {
 }
 message PackagesInfo {
   repeated PackageInfo packages = 1;
-}
-
-message Device {
-  string name = 1;
-}
-
-message DeviceList {
-  repeated Device devices = 1;
 }

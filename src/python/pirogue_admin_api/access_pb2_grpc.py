@@ -73,6 +73,11 @@ class AccessStub(object):
                 request_serializer=pirogue__admin__api_dot_access__pb2.PermissionChanges.SerializeToString,
                 response_deserializer=pirogue__admin__api_dot_access__pb2.UserAccess.FromString,
                 )
+        self.MyUserAccess = channel.unary_unary(
+                '/pirogue.admin.access.Access/MyUserAccess',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=pirogue__admin__api_dot_access__pb2.UserAccess.FromString,
+                )
 
 
 class AccessServicer(object):
@@ -181,6 +186,15 @@ class AccessServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def MyUserAccess(self, request, context):
+        """
+        Get user access details given the authentication token used by the caller of this method.
+        Returns the caller UserAccess.
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_AccessServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -237,6 +251,11 @@ def add_AccessServicer_to_server(servicer, server):
             'SetUserAccessPermissions': grpc.unary_unary_rpc_method_handler(
                     servicer.SetUserAccessPermissions,
                     request_deserializer=pirogue__admin__api_dot_access__pb2.PermissionChanges.FromString,
+                    response_serializer=pirogue__admin__api_dot_access__pb2.UserAccess.SerializeToString,
+            ),
+            'MyUserAccess': grpc.unary_unary_rpc_method_handler(
+                    servicer.MyUserAccess,
+                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                     response_serializer=pirogue__admin__api_dot_access__pb2.UserAccess.SerializeToString,
             ),
     }
@@ -434,6 +453,23 @@ class Access(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/pirogue.admin.access.Access/SetUserAccessPermissions',
             pirogue__admin__api_dot_access__pb2.PermissionChanges.SerializeToString,
+            pirogue__admin__api_dot_access__pb2.UserAccess.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def MyUserAccess(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.access.Access/MyUserAccess',
+            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             pirogue__admin__api_dot_access__pb2.UserAccess.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

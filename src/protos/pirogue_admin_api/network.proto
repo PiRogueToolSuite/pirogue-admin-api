@@ -20,8 +20,14 @@ service Network {
   Returns the VPNPeer details.
   */
   rpc GetVPNPeer (google.protobuf.Int32Value) returns (VPNPeer) {}
+  /*
+  Get VPN peer configuration used to setup a new VPN client.
+  Returns the VPNPeer configuration content
+   */
   rpc GetVPNPeerConfig (google.protobuf.Int32Value) returns (google.protobuf.StringValue) {}
+  /* Add a new VPN Peer */
   rpc AddVPNPeer (VPNPeerAddRequest) returns (VPNPeer) {}
+  /* Delete a VPN Peer given the its ID. */
   rpc DeleteVPNPeer (google.protobuf.Int32Value) returns (VPNPeer) {}
 
   /*
@@ -35,14 +41,20 @@ service Network {
   */
   rpc SetWifiConfiguration (WifiConfiguration) returns (google.protobuf.Empty) {}
 
-  /* External access */
+  /* Enable External access */
   rpc EnableExternalPublicAccess (PublicAccessRequest) returns (google.protobuf.Empty) {}
+  /* Disable External access */
   rpc DisableExternalPublicAccess (google.protobuf.Empty) returns (google.protobuf.Empty) {}
 
-  /* 'Firewall' */
+  /* Open  a Port on the Isolated interface */
   rpc OpenIsolatedPort (IsolatedPort) returns (google.protobuf.Empty) {}
+  /* Open  a Port on the Isolated interface */
   rpc CloseIsolatedPort (ClosePortRequest) returns (google.protobuf.Empty) {}
+  /* Open  opened Ports on the Isolated interface */
   rpc ListIsolatedOpenPorts (google.protobuf.Empty) returns (IsolatedPortList) {}
+
+  /* List Connected Devices to the Isolated Interface */
+  rpc ListConnectedDevices (google.protobuf.Empty) returns (DeviceList) {}
 }
 
 message VPNPeer {
@@ -50,6 +62,7 @@ message VPNPeer {
   string comment = 2;
   string public_key = 3;
   optional string private_key = 4;
+  optional string ipv4_address = 5;
 }
 
 message VPNPeerAddRequest {
@@ -83,4 +96,13 @@ message IsolatedPortList {
 
 message ClosePortRequest {
   optional uint32 port = 1;
+}
+
+message Device {
+  string ip_addr = 1;
+  optional int32 peer_idx = 2;
+}
+
+message DeviceList {
+  repeated Device devices = 1;
 }

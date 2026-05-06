@@ -78,6 +78,11 @@ class NetworkStub(object):
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
                 response_deserializer=pirogue__admin__api_dot_network__pb2.IsolatedPortList.FromString,
                 )
+        self.ListConnectedDevices = channel.unary_unary(
+                '/pirogue.admin.network.Network/ListConnectedDevices',
+                request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+                response_deserializer=pirogue__admin__api_dot_network__pb2.DeviceList.FromString,
+                )
 
 
 class NetworkServicer(object):
@@ -104,19 +109,24 @@ class NetworkServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def GetVPNPeerConfig(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """
+        Get VPN peer configuration used to setup a new VPN client.
+        Returns the VPNPeer configuration content
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def AddVPNPeer(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Add a new VPN Peer 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DeleteVPNPeer(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Delete a VPN Peer given the its ID. 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -140,33 +150,43 @@ class NetworkServicer(object):
         raise NotImplementedError('Method not implemented!')
 
     def EnableExternalPublicAccess(self, request, context):
-        """External access 
+        """Enable External access 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def DisableExternalPublicAccess(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Disable External access 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def OpenIsolatedPort(self, request, context):
-        """'Firewall' 
+        """Open  a Port on the Isolated interface 
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def CloseIsolatedPort(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Open  a Port on the Isolated interface 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ListIsolatedOpenPorts(self, request, context):
-        """Missing associated documentation comment in .proto file."""
+        """Open  opened Ports on the Isolated interface 
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ListConnectedDevices(self, request, context):
+        """List Connected Devices to the Isolated Interface 
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -233,6 +253,11 @@ def add_NetworkServicer_to_server(servicer, server):
                     servicer.ListIsolatedOpenPorts,
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                     response_serializer=pirogue__admin__api_dot_network__pb2.IsolatedPortList.SerializeToString,
+            ),
+            'ListConnectedDevices': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListConnectedDevices,
+                    request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                    response_serializer=pirogue__admin__api_dot_network__pb2.DeviceList.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -447,5 +472,22 @@ class Network(object):
         return grpc.experimental.unary_unary(request, target, '/pirogue.admin.network.Network/ListIsolatedOpenPorts',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             pirogue__admin__api_dot_network__pb2.IsolatedPortList.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ListConnectedDevices(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/pirogue.admin.network.Network/ListConnectedDevices',
+            google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+            pirogue__admin__api_dot_network__pb2.DeviceList.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

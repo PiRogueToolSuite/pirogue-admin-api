@@ -68,6 +68,11 @@ service Access {
   Returns the updated UserAccess.
   */
   rpc SetUserAccessPermissions (PermissionChanges) returns (UserAccess);
+  /*
+  Get user access details given the authentication token used by the caller of this method.
+  Returns the caller UserAccess.
+  */
+  rpc MyUserAccess (google.protobuf.Empty) returns (UserAccess);
 }
 
 message MethodAccess {

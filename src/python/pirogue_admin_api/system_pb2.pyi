@@ -90,18 +90,6 @@ class ConfigurationTreeSection(_message.Message):
     variables: _containers.RepeatedScalarFieldContainer[str]
     def __init__(self, packages: _Optional[_Iterable[str]] = ..., files: _Optional[_Iterable[str]] = ..., variables: _Optional[_Iterable[str]] = ..., actions: _Optional[_Iterable[str]] = ..., default: _Optional[str] = ...) -> None: ...
 
-class Device(_message.Message):
-    __slots__ = ["name"]
-    NAME_FIELD_NUMBER: _ClassVar[int]
-    name: str
-    def __init__(self, name: _Optional[str] = ...) -> None: ...
-
-class DeviceList(_message.Message):
-    __slots__ = ["devices"]
-    DEVICES_FIELD_NUMBER: _ClassVar[int]
-    devices: _containers.RepeatedCompositeFieldContainer[Device]
-    def __init__(self, devices: _Optional[_Iterable[_Union[Device, _Mapping]]] = ...) -> None: ...
-
 class ItemInfo(_message.Message):
     __slots__ = ["description", "name", "state"]
     DESCRIPTION_FIELD_NUMBER: _ClassVar[int]
