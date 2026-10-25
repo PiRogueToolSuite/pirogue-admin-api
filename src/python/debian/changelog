@@ -1,3 +1,9 @@
+python3-pirogue-admin-api (3.0.0) UNRELEASED; urgency=medium
+
+  * Build for trixie.
+
+ -- Cyril Brulebois <cyril@debamax.com>  Sun, 25 Oct 2026 23:22:51 +0100
+
 python3-pirogue-admin-api (2.0.6) bookworm; urgency=medium
 
   * Fix system-wide device listing tool
